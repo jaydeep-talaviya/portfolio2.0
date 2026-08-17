@@ -1,0 +1,22 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.tsx";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Experience from "../components/Experience.astro";
+import Projects from "../components/Projects.astro";
+import Certifications from "../components/Certifications.astro";
+import Contact from "../components/Contact.tsx";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Jaydeep Talaviya — Python Backend Developer">
+  <Navbar client:load />
+  <Hero />
+  <About />
+  <Experience />
+  <Projects />
+  <Certifications />
+  <Contact client:load />
+  <Footer />
+</Layout>

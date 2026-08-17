@@ -1,0 +1,127 @@
+---
+---
+
+<section
+  id="home"
+  class="relative min-h-screen flex items-center overflow-hidden"
+>
+  <!-- Background grid pattern -->
+  <div
+    class="absolute inset-0 opacity-[0.03]"
+    style="background-image: linear-gradient(var(--color-accent) 1px, transparent 1px), linear-gradient(90deg, var(--color-accent) 1px, transparent 1px); background-size: 60px 60px;"
+  >
+  </div>
+
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-12 items-center">
+    <!-- Left: Text -->
+    <div class="space-y-8">
+      <div class="space-y-4">
+        <p
+          class="text-sm font-mono tracking-widest uppercase animate-fade-in-up"
+          style="color: var(--color-accent);"
+        >
+          Python Backend Developer
+        </p>
+        <h1
+          class="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in-up delay-100"
+        >
+          Jaydeep <span
+            class="block bg-clip-text text-transparent bg-gradient-to-r"
+            style="background-image: linear-gradient(90deg, var(--color-accent), #00f0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"
+          >
+            Talaviya
+          </span>
+        </h1>
+        <p
+          class="text-lg sm:text-xl max-w-lg animate-fade-in-up delay-200"
+          style="color: var(--color-text-muted);"
+        >
+          Building scalable REST APIs, microservices, and event-driven systems with <span style="color: var(--color-accent);">5+ years</span> of experience.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap gap-4 animate-fade-in-up delay-300">
+        <a
+          href="#projects"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm transition-all duration-300 hover:scale-105"
+          style="background: var(--color-accent); color: var(--color-bg);"
+        >
+          View Work
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </a>
+        <a
+          href="/resume.pdf"
+          download
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm border transition-all duration-300 hover:scale-105"
+          style="border-color: var(--color-border); color: var(--color-text);"
+        >
+          Download Resume
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+            ></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: 3D visual (handled by ParticleBackground globally) -->
+    <div class="relative flex justify-center lg:justify-end animate-fade-in-up delay-200">
+      <div
+        class="relative w-full max-w-[400px] aspect-square rounded-3xl flex items-center justify-center"
+        style="background: radial-gradient(circle, var(--color-accent-glow) 0%, transparent 70%);"
+      >
+        <div class="text-center space-y-4">
+          <div
+            class="w-24 h-24 mx-auto rounded-full flex items-center justify-center text-3xl font-bold animate-glow-pulse"
+            style="background: var(--color-surface); border: 2px solid var(--color-accent); color: var(--color-accent);"
+          >
+            JT
+          </div>
+          <p class="text-xs font-mono" style="color: var(--color-text-muted);">
+            Python · FastAPI · Django<br />Microservices · Event-Driven
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+    <a href="#about" style="color: var(--color-text-muted);">
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
+    </a>
+  </div>
+</section>
+
+

@@ -1,0 +1,69 @@
+---
+import { projects } from "../data/projects";
+---
+
+<section id="projects" class="py-24 px-6">
+  <div class="max-w-7xl mx-auto space-y-16">
+    <!-- Section header -->
+    <div class="space-y-4">
+      <p
+        class="text-sm font-mono tracking-widest uppercase"
+        style="color: var(--color-accent);"
+      >
+        03 &mdash; Projects
+      </p>
+      <h2 class="text-3xl sm:text-4xl font-bold">
+        Things I've <span class="bg-clip-text text-transparent" style="background-image: linear-gradient(90deg, var(--color-accent), #00f0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Built</span>
+      </h2>
+    </div>
+
+    <!-- Projects grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {
+        projects.map((project, i) => (
+          <div
+            class="group relative p-6 rounded-2xl border transition-all duration-500 hover:translate-y-[-2px]"
+            style="background: var(--color-surface); border-color: var(--color-border);"
+            onmouseover="this.style.borderColor='var(--color-accent)';this.style.boxShadow='0 0 25px var(--color-accent-glow)'"
+            onmouseout="this.style.borderColor='var(--color-border)';this.style.boxShadow='none'"
+          >
+            <div class="flex items-center gap-3 mb-4">
+              <span
+                class="flex items-center justify-center w-7 h-7 rounded-md text-[11px] font-mono font-bold"
+                style="background: var(--color-accent-glow); color: var(--color-accent);"
+              >
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3 class="text-lg font-bold">{project.title}</h3>
+            </div>
+
+            <p
+              class="text-sm leading-relaxed mb-5"
+              style="color: var(--color-text-muted);"
+            >
+              {project.description}
+            </p>
+
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              {project.tech.map((t) => (
+                <span
+                  class="px-2 py-1 text-[11px] font-mono rounded-md"
+                  style="background: var(--color-accent-glow); color: var(--color-accent-dim);"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            <p
+              class="text-xs font-mono pt-3 border-t"
+              style="border-color: var(--color-border); color: var(--color-text-muted);"
+            >
+              {project.metric}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

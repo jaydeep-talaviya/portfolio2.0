@@ -1,0 +1,69 @@
+---
+import { certifications } from "../data/skills";
+---
+
+<section id="certifications" class="py-24 px-6">
+  <div class="max-w-7xl mx-auto space-y-16">
+    <!-- Section header -->
+    <div class="space-y-4">
+      <p
+        class="text-sm font-mono tracking-widest uppercase"
+        style="color: var(--color-accent);"
+      >
+        04 &mdash; Certifications
+      </p>
+      <h2 class="text-3xl sm:text-4xl font-bold">Learning & Credentials</h2>
+    </div>
+
+    <!-- Cert grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {
+        certifications.map((cert) => (
+          <a
+            href={cert.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex items-start gap-4 p-5 rounded-xl border transition-all duration-300 hover:scale-[1.01]"
+            style="background: var(--color-surface); border-color: var(--color-border);"
+            onmouseover="this.style.borderColor='var(--color-accent)'"
+            onmouseout="this.style.borderColor='var(--color-border)'"
+          >
+            {/* Checkmark icon */}
+            <div
+              class="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5"
+              style="background: var(--color-accent-glow);"
+            >
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="var(--color-accent)"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </div>
+
+            <div class="space-y-1 min-w-0">
+              <h3
+                class="text-sm font-semibold leading-snug group-hover:text-[var(--color-accent)] transition-colors duration-200"
+              >
+                {cert.name}
+              </h3>
+              <p
+                class="text-xs"
+                style="color: var(--color-text-muted);"
+              >
+                {cert.issuer}
+              </p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

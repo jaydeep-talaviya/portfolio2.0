@@ -1,0 +1,70 @@
+---
+import { skillGroups } from "../data/skills";
+---
+
+<section id="about" class="py-24 px-6">
+  <div class="max-w-7xl mx-auto space-y-16">
+    <!-- Section header -->
+    <div class="space-y-4">
+      <p
+        class="text-sm font-mono tracking-widest uppercase"
+        style="color: var(--color-accent);"
+      >
+        01 &mdash; About
+      </p>
+      <h2 class="text-3xl sm:text-4xl font-bold">
+        Building the Backend that <span class="bg-clip-text text-transparent" style="background-image: linear-gradient(90deg, var(--color-accent), #00f0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Powers Products</span>
+      </h2>
+    </div>
+
+    <div class="grid lg:grid-cols-5 gap-12">
+      <!-- Bio -->
+      <div class="lg:col-span-2 space-y-6">
+        <p class="text-base leading-relaxed" style="color: var(--color-text-muted);">
+          Python backend developer with <strong style="color: var(--color-text);">5+ years</strong> building scalable REST APIs, microservices, and event-driven systems for
+          enterprise applications. Strong hands-on work with FastAPI, Django, PostgreSQL,
+          Azure SQL, Redis, and Celery, including domain-driven (DDD) service design.
+        </p>
+
+        <div
+          class="p-5 rounded-xl border"
+          style="background: var(--color-surface); border-color: var(--color-border);"
+        >
+          <p class="text-xs font-mono uppercase tracking-wider mb-2" style="color: var(--color-accent);">
+            Currently building
+          </p>
+          <p class="text-sm font-medium" style="color: var(--color-text);">
+            Sustain — A multi-service ERP platform covering approval rules,
+            notification delivery, and cross-system data synchronization.
+          </p>
+        </div>
+      </div>
+
+      <!-- Skills -->
+      <div class="lg:col-span-3 space-y-6">
+        {skillGroups.map((group) => (
+          <div class="space-y-3">
+            <h3
+              class="text-xs font-mono uppercase tracking-wider"
+              style="color: var(--color-accent);"
+            >
+              {group.name}
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              {group.skills.map((skill) => (
+                <span
+                  class="px-3 py-1.5 text-xs font-medium rounded-full border transition-all duration-300 hover:scale-105 cursor-default"
+                  style="border-color: var(--color-border); color: var(--color-text-muted);"
+                  onmouseover="this.style.borderColor='var(--color-accent)';this.style.color='var(--color-accent)';this.style.boxShadow='0 0 12px var(--color-accent-glow)'"
+                  onmouseout="this.style.borderColor='var(--color-border)';this.style.color='var(--color-text-muted)';this.style.boxShadow='none'"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
