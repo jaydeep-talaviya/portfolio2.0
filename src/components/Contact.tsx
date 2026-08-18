@@ -1,9 +1,5 @@
 import { useState, type FormEvent } from "react";
 
-const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
 const GithubIcon = () => (
   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
@@ -65,25 +61,38 @@ export default function Contact() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
+  const SERVICE_ID = "service_29d0odk";
+  const TEMPLATE_ID = "template_zbn4err";
+  const PUBLIC_KEY = "TAxGREOMdC-riFrHZ";
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setStatus("sending");
+    setErrorMsg("");
+
+    if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY || PUBLIC_KEY === "YOUR_PUBLIC_KEY_HERE") {
+      setErrorMsg("Email not configured. Service: " + (SERVICE_ID || "missing") + ", Template: " + (TEMPLATE_ID || "missing") + ", Key: " + (PUBLIC_KEY ? "set" : "missing"));
+      setStatus("error");
+      return;
+    }
+
     try {
       const emailjs = await import("@emailjs/browser");
-      await emailjs.send(
+      const result = await emailjs.send(
         SERVICE_ID,
         TEMPLATE_ID,
         { from_name: form.name, from_email: form.email, message: form.message, to_name: "Jaydeep Talaviya", to_email: "jaydeeptalaviya7@gmail.com" },
         { publicKey: PUBLIC_KEY }
       );
+      console.log("EmailJS result:", result);
       setStatus("sent");
       setForm({ name: "", email: "", message: "" });
       setTimeout(() => setStatus("idle"), 4000);
     } catch (err: any) {
-      console.error("EmailJS error:", err);
-      setErrorMsg(err?.text || err?.message || "Unknown error");
+      console.error("EmailJS error:", JSON.stringify(err), err);
+      setErrorMsg(err?.text || err?.message || JSON.stringify(err) || "Unknown error");
       setStatus("error");
-      setTimeout(() => setStatus("idle"), 6000);
+      setTimeout(() => setStatus("idle"), 8000);
     }
   };
 
