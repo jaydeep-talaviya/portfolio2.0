@@ -6,12 +6,49 @@ import SectionObserver from "../components/SectionObserver.tsx";
 interface Props {
   title: string;
   description?: string;
+  image?: string;
 }
 
 const {
   title,
-  description = "Python Backend Developer with 5+ years building scalable REST APIs, microservices, and event-driven systems. FastAPI, Django, PostgreSQL, Azure.",
+  description = "Python Backend Developer with 5+ years building scalable REST APIs, microservices, and event-driven systems using FastAPI, Django, PostgreSQL, and Azure.",
+  image = "/og-image.png",
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, "https://jaytalaviya.in");
+const ogImageURL = new URL(image, "https://jaytalaviya.in");
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Jaydeep Talaviya",
+  url: "https://jaytalaviya.in",
+  jobTitle: "Python Backend Developer",
+  description,
+  email: "jaydeeptalaviya7@gmail.com",
+  sameAs: [
+    "https://github.com/jaydeep-talaviya",
+    "https://linkedin.com/in/jaydeep-talaviya-540901195",
+  ],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Ahmedabad",
+    addressRegion: "Gujarat",
+    addressCountry: "IN",
+  },
+  knowsAbout: [
+    "Python",
+    "FastAPI",
+    "Django",
+    "PostgreSQL",
+    "REST API",
+    "Microservices",
+    "Azure",
+    "Docker",
+    "Kubernetes",
+    "Event-Driven Architecture",
+  ],
+};
 ---
 
 <!doctype html>
@@ -21,17 +58,33 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#0a0a0a" />
+    <meta name="author" content="Jaydeep Talaviya" />
+    <meta name="keywords" content="Jaydeep Talaviya, Python Developer, Backend Developer, FastAPI, Django, PostgreSQL, Microservices, REST API, Ahmedabad, Gujarat, India" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
 
+    <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://jaytalaviya.in" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:site_name" content="Jaydeep Talaviya — Python Backend Developer" />
+    <meta property="og:locale" content="en_US" />
 
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+    <meta name="twitter:creator" content="@jaydeep_talaviya" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
