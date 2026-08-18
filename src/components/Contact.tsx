@@ -99,7 +99,7 @@ export default function Contact() {
   const inputStyle = { background: "var(--color-bg)", border: "1px solid var(--color-border)", color: "var(--color-text)" };
 
   return (
-    <section id="contact" className="py-12 sm:py-16 lg:py-24 px-6">
+    <section id="contact" className="py-12 sm:py-16 lg:py-20 px-6">
       <div className="max-w-7xl mx-auto space-y-16">
         <div className="space-y-4">
           <p className="text-sm font-mono tracking-widest uppercase" style={{ color: "var(--color-accent)" }}>05 &mdash; Contact</p>
