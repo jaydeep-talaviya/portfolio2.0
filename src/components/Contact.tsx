@@ -63,6 +63,7 @@ const socials = [
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -78,9 +79,11 @@ export default function Contact() {
       setStatus("sent");
       setForm({ name: "", email: "", message: "" });
       setTimeout(() => setStatus("idle"), 4000);
-    } catch {
+    } catch (err: any) {
+      console.error("EmailJS error:", err);
+      setErrorMsg(err?.text || err?.message || "Unknown error");
       setStatus("error");
-      setTimeout(() => setStatus("idle"), 4000);
+      setTimeout(() => setStatus("idle"), 6000);
     }
   };
 
@@ -119,9 +122,9 @@ export default function Contact() {
               {status === "error" && "Failed — Try Again"}
               {status === "idle" && <><SendIcon /> Send Message</>}
             </button>
-            {status === "error" && (
-              <p className="text-xs" style={{ color: "#ef4444" }}>
-                Something went wrong. Please try again or email me directly.
+            {status === "error" && errorMsg && (
+              <p className="text-xs font-mono" style={{ color: "#ef4444" }}>
+                {errorMsg}
               </p>
             )}
           </form>
